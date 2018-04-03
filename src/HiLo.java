@@ -8,9 +8,11 @@ public class HiLo {
 		do {
 			// randomly generated number
 			int theNumber = (int)(Math.random() * 100 + 1);
-			
+
 			int guess = 0;
-			while (guess != theNumber) {
+			int numGuess = 0;
+			int maxGuess = 0;
+			while (guess != theNumber && maxGuess < 5) {
 				System.out.println("Guess a number between 1 and 100");
 				guess = scan.nextInt();
 				if ( guess < theNumber )
@@ -19,12 +21,22 @@ public class HiLo {
 					System.out.println(guess + " is too high. Try again.");
 				else
 					System.out.println(guess + " is correct. You win!");
+				numGuess += 1;
+				maxGuess = numGuess;
+				System.out.println("You are at " + numGuess + " and have " + (5 - numGuess) + " left.");
+			}
+			if (maxGuess > 5 ) {
+				System.out.println("You are out of attempts, sorry.");
+			if (maxGuess <= 5) {
+				System.out.println("It took you " + numGuess + " attempts to get this number correct.");
+				}
 			}
 
 			System.out.println("Would you like to play again (y/n)?");
 			playAgain = scan.next();
 		} while (playAgain.equalsIgnoreCase("y"));
-		 System.out.println("Thanks for playing! Goodbye!");
+		System.out.println("Thanks for playing! Goodbye!");
+		scan.close();
 	}
 
 }
