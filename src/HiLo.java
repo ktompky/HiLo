@@ -11,8 +11,8 @@ public class HiLo {
 
 			int guess = 0;
 			int numGuess = 0;
-			int maxGuess = 0;
-			while (guess != theNumber && maxGuess < 5) {
+			
+			while (guess != theNumber && numGuess <= 5) {
 				System.out.println("Guess a number between 1 and 100");
 				guess = scan.nextInt();
 				if ( guess < theNumber )
@@ -22,16 +22,15 @@ public class HiLo {
 				else
 					System.out.println(guess + " is correct. You win!");
 				numGuess += 1;
-				maxGuess = numGuess;
-				System.out.println("You are at " + numGuess + " and have " + (5 - numGuess) + " left.");
+				
+				System.out.println("You are at " + numGuess + " and have " + (6 - numGuess) + " left.");
 			}
-			if (maxGuess > 5 ) {
-				System.out.println("You are out of attempts, sorry.");
-			if (maxGuess <= 5) {
-				System.out.println("It took you " + numGuess + " attempts to get this number correct.");
-				}
+			if (numGuess <= 5) {
+			System.out.println("It took you " + numGuess + " attempts to get this number correct.");
 			}
-
+			else if (numGuess >= 6) { 
+				System.out.println("You made too many attempts, sorry.");
+			}
 			System.out.println("Would you like to play again (y/n)?");
 			playAgain = scan.next();
 		} while (playAgain.equalsIgnoreCase("y"));
